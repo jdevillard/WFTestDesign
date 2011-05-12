@@ -1,0 +1,35 @@
+﻿<sap:ActivityDesigner x:Class="WFTestDesign.Activities.Designers.File.FileCreate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" 
+    xmlns:my="clr-namespace:WFTestDesign.Activities.Designers.Helper.Converter">
+    <sap:ActivityDesigner.Resources>
+        <my:FileNameReduceConverter x:Key="FileNameReduceConverter" />
+    </sap:ActivityDesigner.Resources>
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\Icon\CopyHS.png"/>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+    <Grid>
+        <StackPanel Margin="5">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5" Text="From"/>
+                <TextBlock Margin="5" Text="{Binding Path=ModelItem.sourcePath, Mode=OneWay, Converter={StaticResource FileNameReduceConverter}}" ToolTip="{Binding Path=ModelItem.sourcePath,Mode=OneWay}"></TextBlock>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5" Text="To"/>
+                <TextBlock Margin="5" Text="{Binding Path=ModelItem.targetPath, Mode=OneWay, Converter={StaticResource FileNameReduceConverter}}" ToolTip="{Binding Path=ModelItem.targetPath,Mode=OneWay}"></TextBlock>
+
+            </StackPanel>
+            
+           
+            
+        </StackPanel>
+        
+    </Grid>
+</sap:ActivityDesigner>

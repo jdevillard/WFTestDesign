@@ -1,0 +1,93 @@
+﻿<ResourceDictionary 
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:my="clr-namespace:WFTestDesign.Activities.Designers.Helper.Converter">
+
+    <!-- BackGround de la zone des activités -->
+    <SolidColorBrush x:Key="BackGround" Color="White" />
+
+    <!-- Style des TextBlock -->
+    <Style TargetType="{x:Type TextBlock}">
+        <Style.Setters>
+            <Setter Property="Margin" Value="0 0 5 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style.Setters>
+    </Style>
+
+    <!-- Style des Border -->
+    <Style x:Key="BorderStyle" TargetType="{x:Type Border}">
+        <Style.Setters>
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Padding" Value="5" />
+        </Style.Setters>
+    </Style>
+
+    <!-- Style des Commentaires -->
+    <Style x:Key="CommentStyle" TargetType="{x:Type TextBlock}">
+        <Style.Setters>
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style.Setters>
+    </Style>
+
+    <!-- Style des WorkflowItemPresenter -->
+    <Style TargetType="{x:Type sap:WorkflowItemPresenter}" >
+        <Style.Setters>
+            <Setter Property="HintText" Value="Glissez une activité ici ..." />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type sap:WorkflowItemPresenter}">
+                        <Border Style="{StaticResource ResourceKey=BorderStyle}">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+    <!-- Style des WorkflowItemsPresenter -->
+    <Style TargetType="{x:Type sap:WorkflowItemsPresenter}">
+        <Style.Setters>
+            <Setter Property="HintText" Value="Glissez vos activités ici ..." />
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <!-- Oriantation des activités (de haut en bas) -->
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="SpacerTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <!-- 
+                         StackPanel utilisé pour étandre la zone de drag and drop d'activité
+                         au dela du simple Polygon
+                         -->
+                        <StackPanel Background="{StaticResource ResourceKey=BackGround}">
+                            <Polygon HorizontalAlignment="Center" Margin="5" Fill="White" Stroke="Gray" Points="0,0 16,0 8,8" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type sap:WorkflowItemsPresenter}">
+                        <Border Style="{StaticResource ResourceKey=BorderStyle}">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+
+    <my:FileNameReduceConverter x:Key="FileNameReduceConverter" />
+</ResourceDictionary>
