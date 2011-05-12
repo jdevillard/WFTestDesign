@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:PropertyEditing="clr-namespace:Microsoft.Windows.Design.PropertyEditing;assembly=Microsoft.Windows.Design.Interaction"
+                     x:Class="WFTestDesign.Activities.Resource.EditorResources"
+>
+
+    <DataTemplate x:Key="CustomInlineEditor"
+                  xmlns:sappe="clr-namespace:System.Activities.Presentation.PropertyEditing;assembly=System.Activities.Presentation">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical">
+                <TextBox Grid.Column="0" Name="textBlock1" Text="{Binding Value}" HorizontalAlignment="Stretch" />
+            </StackPanel>
+
+
+            <sappe:EditModeSwitchButton
+                HorizontalAlignment="Stretch" 
+                Grid.Column="1" Content=" ... " TargetEditMode="Dialog" />
+
+        </Grid>
+    </DataTemplate>
+    
+    <!--    <DataTemplate x:Key="BrushInlineEditorTemplate">
+  
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical">
+                <TextBox Grid.Column="0" Name="textBlock1" Text="{Binding Value}" HorizontalAlignment="Stretch" />
+            </StackPanel>
+
+
+            <PropertyEditing:EditModeSwitchButton
+                HorizontalAlignment="Stretch" 
+                Grid.Column="1" Content=" ... " TargetEditMode="Dialog" />
+
+        </Grid> 
+    </DataTemplate>
+
+    <DataTemplate x:Key="CustomInlineEditor"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:sappe="clr-namespace:System.Activities.Presentation.PropertyEditing;assembly=System.Activities.Presentation">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="{Binding Path=Value}" MaxWidth="90" />
+            <sappe:EditModeSwitchButton TargetEditMode="Dialog" />
+        </StackPanel>
+    </DataTemplate>
+-->
+</ResourceDictionary>

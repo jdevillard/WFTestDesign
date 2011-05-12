@@ -1,0 +1,68 @@
+﻿<sap:ActivityDesigner x:Class="WFTestDesign.Activities.Designers.File.ValidateFile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+    >
+    <sap:ActivityDesigner.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WFTestDesign.Activities.Designers;component/Themes/General.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+       
+    </sap:ActivityDesigner.Resources>
+    <sap:ActivityDesigner.Icon>
+        <DrawingBrush>
+            <DrawingBrush.Drawing>
+                <ImageDrawing Rect="0 0 16 16" ImageSource="..\Icon\OpenFile.png"/>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </sap:ActivityDesigner.Icon>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Delete File" Grid.Column="0" Grid.Row="0"/>
+                    <CheckBox IsChecked="{Binding Path=ModelItem.DeleteFile,Mode=TwoWay}" Grid.Column="1" Grid.Row="0"/>
+
+                    <TextBlock Text="Directory" Grid.Column="0" Grid.Row="1"/>
+                    <TextBlock Text="{Binding Path=ModelItem.Directory, Mode=OneWay,Converter={StaticResource FileNameReduceConverter}}"
+                               ToolTip="{Binding Path=ModelItem.Directory, Mode=OneWay}"
+                               
+                               Grid.Column="1"
+                               Grid.Row="1"/>
+
+                    <TextBlock Text="search Pattern" Grid.Column="0" Grid.Row="2"/>
+                    <TextBlock Text="{Binding Path=ModelItem.SearchPattern, Mode=OneWay}"
+                               Grid.Column="1"
+                               Grid.Row="2"/>
+                    
+                    
+                    
+                </Grid>
+                
+            </StackPanel>
+            <StackPanel/>
+            <TextBlock Grid.Row="1" Text="Activities"/>
+            <sap:WorkflowItemsPresenter
+                Grid.Row="2" Items="{Binding Path=ModelItem.Activities}"/>
+        </Grid>
+        
+    </Grid>
+</sap:ActivityDesigner>

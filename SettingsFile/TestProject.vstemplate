@@ -1,0 +1,42 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>BizUnit WF Test Project</Name>
+    <Description>Create a C# project that include BizUnit WF Framework for testing application</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>Test</ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Simple</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+<!--
+    <References>
+     <Reference>
+        <Assembly>BizUnitWF.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=da838f9899145d49</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>
+          BizUnitWF.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=da838f9899145d49
+        </Assembly>
+      </Reference>
+    </References>
+    -->
+
+    <Project TargetFileName="MyTemplate.csproj" File="BizUnitWF.TemplateTest.csproj" ReplaceParameters="true">
+      <ProjectItem>Properties\AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="BizUnitTestLauncher.cs">BizUnitTestLauncher.cs</ProjectItem>
+      
+
+    </Project>
+    <CustomParameters>
+      <CustomParameter Name="$MyParameter1$" Value="MyValue2"/>
+      <CustomParameter Name="$MyParameter2$" Value="MyValue2"/>
+    </CustomParameters>
+  </TemplateContent>
+  
+  
+</VSTemplate>
