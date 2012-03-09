@@ -234,7 +234,7 @@ namespace Microsoft.WFTestDesign_Integration
             base.Initialize();
 
 
-            updatedVersion updateversion = UpdateChecker.CheckForUpdates("http://localhost/wftestdesign_release/ReleaseFeed.xml",UpdateFilter.Alpha);
+            updatedVersion updateversion = UpdateChecker.CheckForUpdates("https://wftestdesign.svn.codeplex.com/svn/Release/ReleaseFeed.xml", UpdateFilter.Alpha);
 
             if(updateversion!=null)
                 CheckNewVersion(updateversion);
