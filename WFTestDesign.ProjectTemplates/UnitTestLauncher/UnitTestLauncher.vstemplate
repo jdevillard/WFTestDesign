@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>WF Test Design Project</Name>
+    <Description>Create a C# project that include WFTestDesign Framework for testing application</Description>
+    <Icon>UnitTestLauncher.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>WFTestDesignTestProject</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <TemplateID>7aad93f3-bf63-451b-9a1b-efcf016634bb</TemplateID>    
+  </TemplateData>
+  <TemplateContent>
+    <Project File="UnitTestLauncher.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true">Properties\AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true">UnitTestLauncher.cs</ProjectItem>
+      <ProjectItem  ReplaceParameters="true">UnitTestLauncher.xaml</ProjectItem>
+
+    </Project>
+    
+  </TemplateContent>
+  
+  <WizardExtension>
+    <Assembly>WFTestDesign.WizardTemplates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=da838f9899145d49</Assembly>
+    <FullClassName>WFTestDesign.WizardTemplates.CustomParameterWizard</FullClassName>
+  </WizardExtension>
+  
+</VSTemplate>

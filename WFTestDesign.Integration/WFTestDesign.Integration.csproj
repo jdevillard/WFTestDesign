@@ -28,6 +28,8 @@
     <WarningLevel>4</WarningLevel>
     <DeployExtension>False</DeployExtension>
     <CreateVsixContainer>True</CreateVsixContainer>
+    <CopyVsixExtensionFiles>True</CopyVsixExtensionFiles>
+    <CopyVsixExtensionLocation>..\WFTestDesign.WixInstaller\vsix</CopyVsixExtensionLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,14 +52,20 @@
       <Private>false</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EnvDTE100">
@@ -98,6 +106,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="WFTestDesign.IntegrationPackage_Register.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -105,6 +114,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="UpdateChecker.cs" />
+    <Compile Include="UpdateDialog.xaml.cs">
+      <DependentUpon>UpdateDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WFTestDesign.IntegrationPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -131,13 +144,53 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ico\DefaultIcoWF.bmp" />
+    <Content Include="Licence.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WFTestDesign.Activities.Designers\WFTestDesign.Activities.Designers.csproj">
+      <Project>{4DF5E2CD-5B20-4956-8AB6-F4CB80F256B4}</Project>
+      <Name>WFTestDesign.Activities.Designers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WFTestDesign.Activities\WFTestDesign.Activities.csproj">
       <Project>{28DFCD28-4F83-4D21-ACDD-AB05AF2E7404}</Project>
       <Name>WFTestDesign.Activities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WFTestDesign.ProjectTemplates\WFTestDesign.ProjectTemplates.csproj">
+      <Project>{F15B33DA-349F-4031-B720-4B4260D09552}</Project>
+      <Name>WFTestDesign.ProjectTemplates</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <TemplateType>Project</TemplateType>
+      <VSIXSubPath>ProjectTemplates\WF Test Design</VSIXSubPath>
+    </ProjectReference>
+    <ProjectReference Include="..\WFTestDesign.ItemTemplates\WFTestDesign.ItemTemplates.csproj">
+      <Project>{81EACC1B-D34D-4893-BA6A-29EB6EB2CAD9}</Project>
+      <Name>WFTestDesign.ItemTemplates</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <TemplateType>Item</TemplateType>
+      <VSIXSubPath>ItemTemplates\WF Test Design</VSIXSubPath>
+    </ProjectReference>
+    <ProjectReference Include="..\WFTestDesign.WizardTemplates\WFTestDesign.WizardTemplates.csproj">
+      <Project>{89CC7DE5-D67D-450E-8EC6-51F37AF54B0F}</Project>
+      <Name>WFTestDesign.WizardTemplates</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+    </ProjectReference>
+    <ProjectReference Include="..\WFTestDesign\WFTestDesign.csproj">
+      <Project>{18822217-8FB7-4CA8-970B-31643EA66D7D}</Project>
+      <Name>WFTestDesign</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UpdateDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>

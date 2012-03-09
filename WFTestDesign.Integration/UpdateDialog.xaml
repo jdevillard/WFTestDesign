@@ -1,0 +1,20 @@
+﻿<Window x:Class="Microsoft.WFTestDesign_Integration.UpdateDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WF Test Design Update" Height="300" Width="300" Name="UpdateWindow">
+    <Grid>
+        <Button Content="Later" Height="23" HorizontalAlignment="Left" Margin="167,226,0,0" Name="btnLater" VerticalAlignment="Top" Width="75" Click="btnLater_Click" />
+        <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="63,226,0,0" Name="btnUpdate" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click" />
+        <CheckBox Content="Never remind me about update" Height="16" HorizontalAlignment="Left" Margin="58,200,0,0" Name="checkNeverRemind" VerticalAlignment="Top" Checked="checkNeverRemind_Checked" Unchecked="checkNeverRemind_Unchecked" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="87,30,0,0" Name="tbkDescription" Text="New update available" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="58,57,0,0" Name="tbkDescownedversion" Text="Your version" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="58,78,0,0" Name="tbkDescAvailableVersion" Text="Available Version" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="179,57,0,0" Name="tbkOwnedVersion" Text="TextBlock" VerticalAlignment="Top" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="179,78,0,0" Name="tbkAvailableVersion" Text="TextBlock" VerticalAlignment="Top" />
+        <StackPanel Height="87" HorizontalAlignment="Left" Margin="45,106,0,66">
+            <ScrollViewer Height="87">
+        <TextBlock  Name="tbkContent" Text="Content of update" VerticalAlignment="Top" Width="183" TextWrapping="Wrap"   />
+        </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Window>

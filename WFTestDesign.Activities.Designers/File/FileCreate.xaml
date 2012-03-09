@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
     xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation" 
-    xmlns:my="clr-namespace:WFTestDesign.Activities.Designers.Helper.Converter">
+    xmlns:my="clr-namespace:WFTestDesign.Activities.Designers.Helper.Converter" Visibility="Visible">
     <sap:ActivityDesigner.Resources>
         <my:FileNameReduceConverter x:Key="FileNameReduceConverter" />
     </sap:ActivityDesigner.Resources>

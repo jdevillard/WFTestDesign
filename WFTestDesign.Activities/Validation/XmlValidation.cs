@@ -47,6 +47,7 @@ namespace WFTestDesign.Activities.Validation
                 
                
                 #region Suppression des noeuds qui varient à chaque nouveau test
+                //TODO implemente a list of xpath expression to exclude
                 XmlNode xmlNodeDoc1 = doc1.SelectSingleNode("//*[local-name()='DateDebutTraitement']");
                 if (xmlNodeDoc1 != null)
                     xmlNodeDoc1.ParentNode.RemoveChild(xmlNodeDoc1);
@@ -67,7 +68,10 @@ namespace WFTestDesign.Activities.Validation
 
                 //Assert.IsTrue(result, xmlDoc.OuterXml);
                 if (!result)
-                    throw new ApplicationException("Erreur de validation XML : " + xmlDoc.OuterXml);
+                    throw new ApplicationException("Error during XML validation : " + xmlDoc.OuterXml);
+
+                else
+                    Logger.TestStepDetail("Message successfully validate");
              
             }
             catch (Exception)

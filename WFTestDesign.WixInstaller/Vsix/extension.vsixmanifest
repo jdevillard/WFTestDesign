@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
   <Identifier Id="a51bcdc4-108b-4ce4-bf3e-e1b1dbfc159e">
     <Name>WFTestDesign</Name>
@@ -27,8 +27,8 @@
     </Reference>
   </References>
   <Content>
-    <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
-    <Assembly AssemblyName="|WFTestDesign.WizardTemplates;AssemblyName|">|WFTestDesign.WizardTemplates|</Assembly>
+    <VsPackage>WFTestDesign.Integration.pkgdef</VsPackage>
+    <Assembly AssemblyName="WFTestDesign.WizardTemplates, Version=1.0.0.0, Culture=neutral, PublicKeyToken=da838f9899145d49">WFTestDesign.WizardTemplates.dll</Assembly>
     <ProjectTemplate>ProjectTemplates</ProjectTemplate>
     <ItemTemplate>ItemTemplates</ItemTemplate>
   </Content>

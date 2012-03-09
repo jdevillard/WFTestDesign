@@ -11,4 +11,9 @@ namespace Microsoft.WFTestDesign_Integration
 
         public static readonly Guid guidWFTestDesign_IntegrationCmdSet = new Guid(guidWFTestDesign_IntegrationCmdSetString);
     };
+
+    static class version
+    {
+        public const string fileversion = "0.5";
+    }
 }
