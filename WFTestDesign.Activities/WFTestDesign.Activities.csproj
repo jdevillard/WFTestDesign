@@ -45,6 +45,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.ConnectionUI">
+      <HintPath>..\References\Microsoft.Data.ConnectionUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
+      <HintPath>..\References\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
@@ -65,11 +71,13 @@
     <Reference Include="WindowsBase" />
     <Reference Include="xmldiffpatch, Version=1.0.8.28, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\XmlDiffPatch\Bin\xmldiffpatch.dll</HintPath>
+      <HintPath>..\References\xmldiffpatch.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DBQuery.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="File\FileDelete.cs" />
     <Compile Include="File\ValidateFile.cs" />
     <Compile Include="General\EventLogCheck.cs" />
@@ -87,6 +95,7 @@
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
     <Compile Include="Resource\EditorResources.cs" />
+    <Compile Include="UI\DataBaseConnectionDialog.cs" />
     <Compile Include="UI\EventLogEditorDialog.cs" />
     <Compile Include="UI\FileSaverDialog.cs" />
     <Compile Include="UI\DirectoryPickerDialog.cs" />
@@ -133,7 +142,9 @@
   <ItemGroup>
     <None Include="WFTestDesign.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Resource\EditorResources.xaml">
       <Generator>MSBuild:Compile</Generator>

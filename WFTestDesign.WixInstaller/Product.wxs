@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="add48b0d-b7e1-44eb-9638-d9339591be58" 
+           Name="WF Test Design"
+           Language="1033" Version="1.0.0.0" 
+           Manufacturer="WFTestDesign" 
+           UpgradeCode="908a64be-c938-464b-8072-0a47b46fe3f4">
+    <Package InstallerVersion="200" Compressed="yes" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <!-- Verify presence of .Net Framework 4.0-->
+    <PropertyRef Id="NETFRAMEWORK40FULL"/>
+    <Condition Message='This Setup requires the .net Framework 4.0 installed.'>
+      <![CDATA[Installed or NETFRAMEWORK40FULL]]>
+    </Condition>
+
+    <PropertyRef Id='VS2010_ROOT_FOLDER'/>
+
+
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="WFTestDesign">
+          <Directory Id="BINDIRECTORY" Name="Bin">
+            <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+            <Component Id="ProductComponent" Guid="46ee54e6-19bc-4753-b397-13ed283e5fee">
+              <!-- TODO: Insert files, registry keys, and other resources here. -->
+              <!--<File Id="FoobarTXT" Name="FooBarAppl10.txt" DiskId="1"
+                    Source="FooBarAppl10.txt" KeyPath="yes"></File>
+              <File Id="WFTestDesignDLL" Name="$(var.WFTestDesign.TargetFileName)"
+                     Source="$(var.WFTestDesign.TargetPath)" DiskId="1" KeyPath="yes" />
+              <File Id="WFTestDesign.ActivitiesDLL" Name="$(var.WFTestDesign.Activities.TargetFileName)"
+                     Source="$(var.WFTestDesign.Activities.TargetPath)" DiskId="1"/>
+              <File Id="WFTestDesign.Activities.DesignersDLL" Name="$(var.WFTestDesign.Activities.Designers.TargetFileName)"
+                     Source="$(var.WFTestDesign.Activities.Designers.TargetPath)" DiskId="1" />-->
+
+              <File Id="WFTestDesignDLL" Name="WFTestDesign.dll"
+                     Source="./vsix/WFTestDesign.dll" DiskId="1" KeyPath="yes" />
+              <File Id="WFTestDesign.ActivitiesDLL" Name="WFTestDesign.Activities.dll"
+                     Source="./vsix/WFTestDesign.Activities.dll" DiskId="1"/>
+              <File Id="WFTestDesign.Activities.DesignersDLL" Name="WFTestDesign.Activities.Designers.dll"
+                     Source="./vsix/WFTestDesign.Activities.Designers.dll" DiskId="1" />
+              <File Id="Microsoft.Data.ConnectionUIdll" Name="Microsoft.Data.ConnectionUI.dll"
+                    Source="./vsix/Microsoft.Data.ConnectionUI.dll" DiskId="1"/>
+              <File Id="Microsoft.Data.ConnectionUI.Dialogdll" Name="Microsoft.Data.ConnectionUI.Dialog.dll"
+                    Source="./vsix/Microsoft.Data.ConnectionUI.Dialog.dll" DiskId="1" />
+
+              <File Id="xmldiffpatchDLL" Name="xmldiffpatch.dll"
+                     Source="./vsix/xmldiffpatch.dll" DiskId="1" />
+
+              <File Id="configxml" Name="config.xml"
+                     Source="config.xml" DiskId="1" >
+                <Permission GenericAll="yes" User="Everyone"/>
+
+              </File>
+
+              <RegistryValue Root='HKLM' Key='Software\WFTestDesign\WFTestDesign' Name='installDir' Type='string' Value='[BINDIRECTORY]' />
+              <RegistryValue Root='HKLM' Key='Software\WFTestDesign\WFTestDesign' Name='checkUpdate' Type='string' Value='true'>
+                <Permission GenericAll='yes' User='Everyone'/>
+              </RegistryValue>
+            </Component>
+            <Component Id='RegistryAddReferenceComponent' Guid='46ee54e6-19bb-4753-b397-13ed283e5fee'>
+              <RegistryValue Root='HKLM' Key='Software\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\WFTestDesign' Type='string' Value='[BINDIRECTORY]' KeyPath='yes'/>
+            </Component>
+
+          </Directory>
+          <Directory Id="VSEXTDIRECTORY" Name="VsExtension">
+            <Component Id="ExtensionComponent" Guid="46ee54e6-19bc-4753-b397-13ed283e5fed">
+              <File Id="WFTestDesignExtension" Name="$(var.WFTestDesign.Integration.TargetFileName)"
+                      Source="$(var.WFTestDesign.Integration.TargetPath)" DiskId="1" KeyPath="yes"/>
+            </Component>
+
+          </Directory>
+          <Directory Id="HELPDIRECTORY" Name="Helpfile">
+            <Component Id ="HelpComponent" Guid="46ee54e6-19bc-4753-b397-13ed283e5fef">
+              <File Id="FooHelpTXT" Name="FooHelp.txt" DiskId="1"
+                    Source="FooHelp.txt" KeyPath="yes"/>
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <Directory Id="VS2010_ROOT_FOLDER">
+        <Directory Id="vsCommon7" Name="Common7">
+          <Directory Id="vsIDE" Name="IDE">
+            <Directory Id="vsExtension" Name="Extensions">
+              
+                <Directory Id="WFTestDesignExtension" Name="WFTestDesign">
+                  <Directory Id="ExtensionVersion" Name="1.0">
+                    <Component Id="VSExtensionComponent" Guid="56ee54e6-19bc-4753-b397-13ed283e5fef">
+                      <File Id="extension.manifest" Source="./vsix/extension.vsixmanifest"
+                            Name="extension.vsixmanifest" KeyPath="yes" DiskId="1"/>
+                      <File Id="WFTestDesign.Integrationdll" Source="./vsix/WFTestDesign.Integration.dll"
+                            Name="WFTestDesign.Integration.dll" DiskId="1"/>
+                      <File Id="WFTestDesign.Integrationpkgdef" Source="./vsix/WFTestDesign.Integration.pkgdef"
+                            Name="WFTestDesign.Integration.pkgdef" DiskId="1"/>
+                      <File Id="WFTestDesign.WizardTemplatesdll" Source="./vsix/WFTestDesign.WizardTemplates.dll"
+                            Name="WFTestDesign.WizardTemplates.dll" DiskId="1"/>
+                      <!-- <File Id="WFTestDesign.ActivitiesDLL_" Name="WFTestDesign.Activities.dll"
+                     Source="./vsix/WFTestDesign.Activities.dll" DiskId="1"/>-->
+
+                    </Component>
+                    <Directory Id="ItemTemplateExt" Name="ItemTemplates">
+                      <Directory Id="ItemTemplate" Name="WF Test Design">
+                        <Directory Id="ItemTemplateCsharp" Name="CSharp">
+                          <Directory Id="ItemTemplate1033" Name="1033">
+                            <Component Id="ItemTemplateComponent" Guid="66ee54e6-19bc-4753-b397-13ed283e5fef">
+                              <File Id ="UnitTestXamlTemplate" Source="./vsix/ItemTemplates/WF Test Design/Csharp/1033/UnitTestXaml.zip"
+                                    Name="UnitTestXaml.zip" DiskId="1" KeyPath="yes"/>
+                            </Component>
+                          </Directory>
+                        </Directory>
+                      </Directory>
+
+                    </Directory>
+
+                    <Directory Id="ProjectTemplateExt" Name="ProjectTemplates">
+                      <Directory Id="ProjectTemplate" Name="WF Test Design">
+                        <Directory Id="ProjectTemplateCsharp" Name="CSharp">
+                          <Directory Id="ProjectTemplate1033" Name="1033">
+                            <Component Id="ProjectTemplateComponent" Guid="76ee54e6-19bc-4753-b397-13ed283e5fef">
+                              <File Id ="UnitTestLauncherTemplate" Source="./vsix/ProjectTemplates/WF Test Design/Csharp/1033/UnitTestLauncher.zip"
+                                    Name="UnitTestLauncher.zip" DiskId="1" KeyPath="yes"/>
+                            </Component>
+                          </Directory>
+                        </Directory>
+                      </Directory>
+
+                    </Directory>
+
+
+
+
+                  </Directory>
+                </Directory>
+              
+            </Directory>
+          </Directory>
+
+        </Directory>
+
+      </Directory>
+      
+      
+    </Directory>
+    
+    
+    <Feature Id="ProductFeature" Title="WorkFlow Test Design Installer" Level="1"
+            ConfigurableDirectory="INSTALLLOCATION" >
+      <!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+       <ComponentRef Id="ProductComponent" />
+      <ComponentRef Id="ExtensionComponent"/>
+      <ComponentRef Id="HelpComponent"/>
+      <ComponentRef Id="VSExtensionComponent"/>
+      <ComponentRef Id="ItemTemplateComponent"/>
+      <ComponentRef Id="ProjectTemplateComponent"/>
+      <ComponentRef Id="RegistryAddReferenceComponent"/>
+      <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
+      <ComponentGroupRef Id="Product.Generated" />
+    </Feature>
+
+    <UIRef Id="WixUI_Mondo" />
+
+  </Product>
+</Wix>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+	<TemplateData>
+		<Name>WF Test Design Test Case</Name>
+		<Description>Create a Xaml Worflow Test Case</Description>
+		<Icon>UnitTestXaml.ico</Icon>
+		<TemplateID>c99fd4f2-b09b-4696-9751-7b74dd38b11f</TemplateID>
+		<ProjectType>CSharp</ProjectType>
+		<RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+		<NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+		<DefaultName>WFTestCase.xaml</DefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<References>
+			<Reference>
+				<Assembly>System</Assembly>
+			</Reference>
+		</References>
+
+		<ProjectItem ReplaceParameters="true">UnitTestXaml.xaml</ProjectItem>
+	</TemplateContent>
+</VSTemplate>

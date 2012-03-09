@@ -37,15 +37,16 @@ namespace Microsoft.WFTestDesign_Integration
     [PackageRegistration(UseManagedResourcesOnly = true)]
     // This attribute is used to register the informations needed to show the this package
     // in the Help/About dialog of Visual Studio.
-    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)]
+    [InstalledProductRegistration("#110", "#112", "1.1", IconResourceID = 400)]
     [Guid(GuidList.guidWFTestDesign_IntegrationPkgString)]
-    public sealed class WFTestDesign_IntegrationPackage : Package
+    public sealed class WFTestDesign_IntegrationPackage : RegistrationAttribute
     {
+
+
+
+
         string CategoryName = "WFTestDesign";
         string ActivityName = "MonActiviteBizUnit";
-        bool CheckUpdate = System.Convert.ToBoolean(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Default).OpenSubKey(@"Software\WFTestDesign\WFTestDesign").GetValue("checkUpdate"));
-        string installFolder = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Default).OpenSubKey(@"Software\WFTestDesign\WFTestDesign").GetValue("installDir").ToString();
-               
 
         /// <summary>
         /// Default constructor of the package.
@@ -73,11 +74,7 @@ namespace Microsoft.WFTestDesign_Integration
             {
                 toolbox.AddTab(CategoryName);
 
-                
-                if(!installFolder.EndsWith(@"\"))
-                    installFolder +=@"\";
-
-                Assembly ass = Assembly.LoadFrom(installFolder+"WFTestDesign.Activities.dll");
+                Assembly ass = Assembly.LoadWithPartialName("WFTestDesign.Activities");
 
                 
                 Func<Assembly, System.Collections.Generic.IEnumerable<Type>> getitems = assembly =>
@@ -94,8 +91,6 @@ namespace Microsoft.WFTestDesign_Integration
                List<Type> ass_type = getitems(ass).ToList();
 
 
-
-               
                // Type[] types = ass.GetTypes();
 
                foreach (Type _type in ass_type)
@@ -106,8 +101,6 @@ namespace Microsoft.WFTestDesign_Integration
                     OleDataObject dataObject = new OleDataObject();
                     //AssemblyName assemblyName = typeof(WFTestDesign.Activities.File.FileCreate).Assembly.GetName();
 
-                   
-                                      
 
                     AssemblyName assemblyName = _type.Assembly.GetName();
                     //assemblyName.CodeBase = @"E:\Dev\VS2010\WFTestDesign\WFTestDesign.Activities\bin\Debug\WFTestDesign.Activities.dll";
@@ -190,34 +183,7 @@ namespace Microsoft.WFTestDesign_Integration
         }
 
 
-        void CheckNewVersion( updatedVersion updateversion)
-        { 
 
-            
-            UpdateDialog updateDialog = new UpdateDialog();
-            updateDialog.tbkOwnedVersion.Text = updateversion.oldversion;
-            updateDialog.tbkAvailableVersion.Text = updateversion.newversion;
-            updateDialog.updatelink = updateversion.downloadurl;
-            updateDialog.tbkContent.Text = updateversion.content;
-            updateDialog.ShowDialog();
-
-           
-            
-            
-            if (updateDialog.checkNeverRemind.IsChecked == true)
-            {
-                //RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Default).SetValue(@"Software\WFTestDesign\WFTestDesign\checkUpdate","false");
-                Registry.SetValue(@"HKEY_LOCAL_MACHINE\Software\WFTestDesign\WFTestDesign\", "checkUpdate", "false");
-                /*
-                System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-                doc.Load(installFolder+"config.xml");
-                System.Xml.XmlNode node = doc.SelectSingleNode("//checkUpdate");
-                node.InnerText = "false";
-                doc.Save(installFolder + "config.xml");
-                */
-            }
-           
-        }
            
 
         /////////////////////////////////////////////////////////////////////////////
@@ -233,13 +199,18 @@ namespace Microsoft.WFTestDesign_Integration
             Trace.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
             base.Initialize();
 
-
-            updatedVersion updateversion = UpdateChecker.CheckForUpdates("http://localhost/wftestdesign_release/ReleaseFeed.xml",UpdateFilter.Alpha);
-
-            if(updateversion!=null)
-                CheckNewVersion(updateversion);
         }
         #endregion
 
+
+        public override void Register(RegistrationAttribute.RegistrationContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Unregister(RegistrationAttribute.RegistrationContext context)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -155,6 +155,10 @@ namespace WFTestDesign.Activities
 
         private void ScheduleNextSetup(NativeActivityContext context)
         {
+            //If no activities goto the Next Step
+            if (this.m_SetupActivities.Count == 0)
+                this.ScheduleNext(context);
+
             if (this.m_Index < this.m_SetupActivities.Count)
             {
                 Logger.TestStepStart(this.m_SetupActivities[this.m_Index].DisplayName);

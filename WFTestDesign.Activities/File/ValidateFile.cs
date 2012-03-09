@@ -128,7 +128,7 @@ namespace WFTestDesign.Activities.File
              MemoryStream data = null;
 
              try
-             {
+             {//TODO : verify \ at the end of directory properties
                  Logger.TestStepDetail("Searching for files in: \"{0}{1}\"", directory, searchPattern);
 
                  DateTime endTime = DateTime.Now + TimeSpan.FromMilliseconds(timeout);

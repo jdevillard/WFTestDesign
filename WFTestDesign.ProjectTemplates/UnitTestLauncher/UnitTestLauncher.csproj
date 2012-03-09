@@ -6,18 +6,29 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F58B2BED-F139-45D5-84B7-5373E6381FD2}</ProjectGuid>
+    <ProjectGuid>{C8E929B2-5503-45C0-A563-EF8F70634D51}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WFTestDesign.Tests</RootNamespace>
-    <AssemblyName>WFTestDesign.Tests</AssemblyName>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <!-- <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion></ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>$guid1$</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
+    <TargetFrameworkVersion>v$targetframeworkversion$</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>-->
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName></SccProjectName>
+    <SccLocalPath></SccLocalPath>
+    <SccAuxPath></SccAuxPath>
+    <SccProvider></SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,12 +50,11 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -53,6 +63,19 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WFTestDesign">
+      <HintPath>$InstallDirectoryFromRegistry$WFTestDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="WFTestDesign.Activities">
+      <HintPath>$InstallDirectoryFromRegistry$WFTestDesign.Activities.dll</HintPath>
+    </Reference>
+    <Reference Include="WFTestDesign.Activities">
+      <HintPath>$InstallDirectoryFromRegistry$WFTestDesign.Activities.dll</HintPath>
+    </Reference>
+    <Reference Include="xmldiffpatch, Version=1.0.8.28, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>$InstallDirectoryFromRegistry$xmldiffpatch.dll</HintPath>
+    </Reference>
+    
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -61,38 +84,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
-    <Compile Include="UnitTest2.cs" />
-    <Compile Include="UnitTest3.cs" />
+    <Compile Include="UnitTestLauncher.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WFTestDesign.Activities.Designers\WFTestDesign.Activities.Designers.csproj">
-      <Project>{4DF5E2CD-5B20-4956-8AB6-F4CB80F256B4}</Project>
-      <Name>WFTestDesign.Activities.Designers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WFTestDesign.Activities\WFTestDesign.Activities.csproj">
-      <Project>{28DFCD28-4F83-4D21-ACDD-AB05AF2E7404}</Project>
-      <Name>WFTestDesign.Activities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WFTestDesign\WFTestDesign.csproj">
-      <Project>{18822217-8FB7-4CA8-970B-31643EA66D7D}</Project>
-      <Name>WFTestDesign</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppdef Include="TestEventLog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppdef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppdef Include="TestDBQuery.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppdef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppdef Include="Activity4.xaml">
+    <XamlAppdef Include="UnitTestLauncher.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppdef>

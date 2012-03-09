@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">WF Test Designer for BizTalk</title>
+  <id>http://wftestdesign.codeplex.com/releases</id>
+  <updated>2011-02-28T00:00:00Z</updated>
+  <author>
+    <name>Jérémie Devillard</name>
+  </author>
+  <entry>
+    <id>http://wftestdesign.codeplex.com/releases/61778</id>
+    <title type="text">0.5</title>
+    <updated>2012-03-07T00:00:00Z</updated>
+    <link href="http://wftestdesign.codeplex.com/releases/view/61778" />
+    <category term="Beta" />
+    <summary >
+      In this release :
+      0.5
+
+      New Wix Deployment
+      Add assemblies to Add Reference Dialog Box :
+      - WFTestDesign
+      - WFTestDesign.Activities
+      - WFTestDesign.Activities.Designer
+      - XmlDiffPatch
+
+      Add update Mechanism to stay tuned ;)
+
+      Activities Added:
+      - DBQuery activity with UI to create connection string (provider available are : SqlDataSource, Sqlfile, OracleDataSource, AccessDataSource, OdbcDataSource)
+
+      some bugs fixed
+    </summary>
+  </entry>
+  <entry>
+    <id>http://wftestdesign.codeplex.com/releases/61778</id>
+    <title type="text">0.2</title>
+    <updated>2011-02-28T00:00:00Z</updated>
+    <link href="http://wftestdesign.codeplex.com/releases/view/61778" />
+    <category term="Beta" />
+  </entry>
+  <entry>
+    <id>http://wftestdesign.codeplex.com/releases/61778</id>
+    <title type="text">0.1</title>
+    <updated>2011-02-28T00:00:00Z</updated>
+    <link href="http://wftestdesign.codeplex.com/releases/view/61778" />
+    <category term="Alpha" />
+  </entry>
+</feed>
+
