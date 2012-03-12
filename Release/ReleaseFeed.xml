@@ -8,9 +8,9 @@
   </author>
   <entry>
     <id>http://wftestdesign.codeplex.com/releases/61778</id>
-    <title type="text">0.6</title>
+    <title type="text">0.5</title>
     <updated>2012-03-07T00:00:00Z</updated>
-    <link href="http://wftestdesign.codeplex.com/releases/view/61778" />
+    <link href="http://wftestdesign.codeplex.com/releases/view/84049" />
     <category term="Beta" />
     <summary >
       In this release :
@@ -28,22 +28,47 @@
       Activities Added:
       - DBQuery activity with UI to create connection string (provider available are : SqlDataSource, Sqlfile, OracleDataSource, AccessDataSource, OdbcDataSource)
 
+      Activities updated :
+      - ValidateFile Activity : add a parameter to not throw an exception if one validation is good.
+      
       some bugs fixed
     </summary>
   </entry>
   <entry>
-    <id>http://wftestdesign.codeplex.com/releases/61778</id>
+    <id>http://wftestdesign.codeplex.com/releases/view/66128</id>
     <title type="text">0.2</title>
-    <updated>2011-02-28T00:00:00Z</updated>
+    <updated>2011-05-12T00:00:00Z</updated>
     <link href="http://wftestdesign.codeplex.com/releases/view/61778" />
     <category term="Beta" />
+    <summary>
+      This is the first release of WFTestDesign. This release is an alpha release to know the interest of the community for this software.
+
+      This release contains :
+      Visual Studio Template and Extensions
+      10 activities to create Test Case
+      new activities to handle event of the event log according to an ID
+      UI in the visual studio property grid
+      Source code is available.
+    </summary>
   </entry>
   <entry>
-    <id>http://wftestdesign.codeplex.com/releases/61778</id>
+    <id>http://wftestdesign.codeplex.com/releases/view/58966</id>
     <title type="text">0.1</title>
-    <updated>2011-02-28T00:00:00Z</updated>
+    <updated>2011-01-11T00:00:00Z</updated>
     <link href="http://wftestdesign.codeplex.com/releases/view/61778" />
     <category term="Alpha" />
+    <summary>
+      This is the first release of WFTestDesign. This release is an alpha release to know the interest of the community for this software.
+
+      This release contains :
+      Visual Studio Template and Extensions
+      9 activities to create Test Case
+
+      This release does not contain :
+      source code
+
+
+    </summary>
   </entry>
 </feed>
 
