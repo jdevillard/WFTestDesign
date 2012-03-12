@@ -39,7 +39,9 @@ namespace WFTestDesign.Activities.File
         private XmlDocument xmldoc;
         private string exceptionString;
         private Exception validationexception;
-        
+        private bool notthrowExceptionIfOneValidationGood;
+
+        private bool isOneValidationSucceed = false;
 
         [Category("ValidateFile Property")]
         public double Timeout
@@ -103,6 +105,20 @@ namespace WFTestDesign.Activities.File
         public Collection<Activity> Activities
         {
             get { return this.activities; }
+        }
+
+        [Category("Multi Validation Property")]
+        [Description("Check this property if you don't want to throw an exception if at least one validation succeed")]
+        public bool notthrowExcIfoneGood
+        {
+            set
+            {
+                this.notthrowExceptionIfOneValidationGood = value;
+            }
+            get
+            {
+                return this.notthrowExceptionIfOneValidationGood;
+            }
         }
 
          public ValidateFile()
@@ -264,10 +280,15 @@ namespace WFTestDesign.Activities.File
          public void MyBinaryCompletionCallback(NativeActivityContext context, ActivityInstance completedInstance)
          {
              if (this.m_Index < this.binaryValidationActivities.Count)
+             {
+                 isOneValidationSucceed = true;
                  ScheduleNextBinaryValidation(context);
+             }
              else
              {
-                 if (!string.IsNullOrEmpty(exceptionString))
+                 isOneValidationSucceed = true;
+
+                 if (!string.IsNullOrEmpty(exceptionString) && throwexception())
                      throw new Exception(exceptionString);
 
                  if (null != binaryValidationMemoryStream)
@@ -298,7 +319,7 @@ namespace WFTestDesign.Activities.File
              }
              else
              {
-                 if (!string.IsNullOrEmpty(exceptionString))
+                 if (!string.IsNullOrEmpty(exceptionString) && throwexception())
                      throw new Exception(exceptionString);
              }
          }
@@ -363,7 +384,19 @@ namespace WFTestDesign.Activities.File
                      throw new Exception(exceptionString);
              }
          }
-         #endregion
+         
+        
+        private bool throwexception()
+         {
+
+             if (isOneValidationSucceed.Equals(true) && notthrowExceptionIfOneValidationGood.Equals(true))
+                 return false;
+             else
+                 return true;
+
+
+         }
+        #endregion
 
         #region Metadata
          protected override void CacheMetadata(NativeActivityMetadata metadata)
