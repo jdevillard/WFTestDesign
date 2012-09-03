@@ -14,6 +14,6 @@ namespace Microsoft.WFTestDesign_Integration
 
     static class version
     {
-        public const string fileversion = "0.5";
+        public const string fileversion = "0.6";
     }
 }

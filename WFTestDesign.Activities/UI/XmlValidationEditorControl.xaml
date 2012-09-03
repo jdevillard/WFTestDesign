@@ -1,0 +1,18 @@
+﻿<Window x:Class="WFTestDesign.Activities.UI.XmlValidationEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="306" Width="295">
+    <Grid Height="268" Width="273">
+        <Button Click="btnSave_Click" Content="Save" Height="23" HorizontalAlignment="Left" Margin="12,238,0,0" Name="btnSave" VerticalAlignment="Top" Width="75" />
+        <Button Click="btnCancel_Click" Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="131,238,0,0" Name="btnCancel" VerticalAlignment="Top" Width="75" />
+        <ListBox Height="138" HorizontalAlignment="Left" Margin="12,95,0,0" Name="listBox1" SelectedIndex="0" VerticalAlignment="Top" Width="194" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,64,0,0" Name="tbkName" Text="Xpath" VerticalAlignment="Top" />
+        <TextBox  Height="23" HorizontalAlignment="Left" Margin="72,64,0,0" Name="tbxName" Text="{Binding ElementName=listBox1, Path=SelectedValue, Mode=OneWay}" VerticalAlignment="Top" Width="189" />
+        <Button Click="btnAdd_Click" Content="+" Height="23" HorizontalAlignment="Left" Margin="212,95,0,0" Name="btnAdd" VerticalAlignment="Top" Width="30" />
+        <Button Click="btnRemove_Click" Content="-" Height="23" HorizontalAlignment="Left" Margin="212,124,0,0" Name="btnRemove" VerticalAlignment="Top" Width="30" />
+        <TextBlock Height="34" HorizontalAlignment="Left" Margin="12,12,0,0" Name="tbkExample" Text="Enter the Xpath expression to locate the node to exclude" VerticalAlignment="Top" Width="238" TextWrapping="Wrap" />
+        <CheckBox Content="All" Height="16" HorizontalAlignment="Left" Margin="220,70,0,0" Name="cbAll" VerticalAlignment="Top" Visibility="Hidden" />
+    </Grid>
+</Window>

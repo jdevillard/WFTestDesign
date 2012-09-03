@@ -10,6 +10,11 @@ using System.Xml.Linq;
 using System.ComponentModel;
 using Microsoft.XmlDiffPatch;
 
+using System.Collections;
+using System.Activities.Presentation.PropertyEditing;
+using System.Activities.Presentation.Metadata;
+using System.Collections.ObjectModel;
+
 namespace WFTestDesign.Activities.Validation
 {
 
@@ -18,6 +23,24 @@ namespace WFTestDesign.Activities.Validation
         #region Declarations
         // Define an activity input argument of type string
         public InArgument<string> ValidateFilePath { get; set; }
+
+
+        public ObservableCollection<string> XpathToIgnore
+        {
+            get
+            {
+                if (_xpathToIgnore == null)
+                    _xpathToIgnore = new ObservableCollection<string>();
+
+                return _xpathToIgnore;
+            }
+            set
+            {
+                _xpathToIgnore = value;
+            }
+        }
+
+        private ObservableCollection<string> _xpathToIgnore;
 
         [Browsable(false)]
         public MemoryStream StreamToValidate {get;set;}
@@ -48,13 +71,37 @@ namespace WFTestDesign.Activities.Validation
                
                 #region Suppression des noeuds qui varient à chaque nouveau test
                 //TODO implemente a list of xpath expression to exclude
-                XmlNode xmlNodeDoc1 = doc1.SelectSingleNode("//*[local-name()='DateDebutTraitement']");
-                if (xmlNodeDoc1 != null)
-                    xmlNodeDoc1.ParentNode.RemoveChild(xmlNodeDoc1);
 
-                XmlNode xmlNodeDoc2 = doc2.SelectSingleNode("//*[local-name()='DateDebutTraitement']");
-                if (xmlNodeDoc2 != null)
-                    xmlNodeDoc2.ParentNode.RemoveChild(xmlNodeDoc2);
+                foreach (var item in _xpathToIgnore)
+                {
+                    /* single node
+                    XmlNode xmlNodeDoc1 = doc1.SelectSingleNode(item);
+                    if (xmlNodeDoc1 != null)
+                        xmlNodeDoc1.ParentNode.RemoveChild(xmlNodeDoc1);
+
+                    XmlNode xmlNodeDoc2 = doc2.SelectSingleNode(item);
+                    if (xmlNodeDoc2 != null)
+                        xmlNodeDoc2.ParentNode.RemoveChild(xmlNodeDoc2);
+                     * 
+                     */
+
+                    XmlNodeList xmlNodeDoc1 = doc1.SelectNodes(item);
+                    if (xmlNodeDoc1 != null)
+                        foreach (XmlNode xmlnode in xmlNodeDoc1)
+                        {
+                            xmlnode.ParentNode.RemoveChild(xmlnode);
+
+                        }
+
+                    XmlNodeList xmlNodeDoc2 = doc2.SelectNodes(item);
+                    if (xmlNodeDoc2 != null)
+                        foreach (XmlNode _xmlnode in xmlNodeDoc2)
+                        {
+                            _xmlnode.ParentNode.RemoveChild(_xmlnode);
+                        }
+ 
+                }
+                
 
                 #endregion
                 
@@ -91,6 +138,22 @@ namespace WFTestDesign.Activities.Validation
             }
 
             return xmldoc;
+        }
+
+        #endregion
+
+        #region properties
+
+        static XmlValidation()
+        {
+            AttributeTableBuilder builder = new AttributeTableBuilder();
+            builder.AddCustomAttributes(
+                typeof(XmlValidation),
+                "XpathToIgnore",
+                PropertyValueEditor.CreateEditorAttribute(typeof(UI.XmlValidationEditorDialog)));
+
+            MetadataStore.AddAttributeTable(builder.CreateTable());
+
         }
 
         #endregion

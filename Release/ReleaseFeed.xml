@@ -8,6 +8,26 @@
   </author>
   <entry>
     <id>http://wftestdesign.codeplex.com/releases/61778</id>
+    <title type="text">0.6</title>
+    <updated>2012-09-03T00:00:00Z</updated>
+    <link href="http://wftestdesign.codeplex.com/releases/view/84049" />
+    <category term="Beta" />
+    <summary >
+      In this release :
+      0.6
+
+      
+      Activities updated :
+      - ValidateFile Activity : added property for better reading on the Properties pane.
+      - XmlValidation Activity : added new property and IHM to allow user to ignore node like datetime when comparing two XML.
+      this property need a list of Xpath to ignore.
+
+      
+    </summary>
+  </entry>
+
+  <entry>
+    <id>http://wftestdesign.codeplex.com/releases/61778</id>
     <title type="text">0.5</title>
     <updated>2012-03-07T00:00:00Z</updated>
     <link href="http://wftestdesign.codeplex.com/releases/view/84049" />
