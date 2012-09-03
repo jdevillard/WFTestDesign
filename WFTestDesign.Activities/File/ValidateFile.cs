@@ -71,6 +71,7 @@ namespace WFTestDesign.Activities.File
         }
 
         [Category("ValidateFile Property")]
+        [DisplayName("Search Pattern")]
         [DependsOn("Directory")]
         public string SearchPattern
         {
@@ -84,6 +85,7 @@ namespace WFTestDesign.Activities.File
             }
         }
 
+        [DisplayName("Delete File")]
         [Category("ValidateFile Property")]
         [DependsOn("DeleteFile")]
         public bool DeleteFile
@@ -108,6 +110,7 @@ namespace WFTestDesign.Activities.File
         }
 
         [Category("Multi Validation Property")]
+        [DisplayName("Don't Throw Exception")]
         [Description("Check this property if you don't want to throw an exception if at least one validation succeed")]
         public bool notthrowExcIfoneGood
         {

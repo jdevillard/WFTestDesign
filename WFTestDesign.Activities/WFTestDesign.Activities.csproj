@@ -95,6 +95,7 @@
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
     <Compile Include="Resource\EditorResources.cs" />
+    <Compile Include="UI\XmlValidationEditorDialog.cs" />
     <Compile Include="UI\DataBaseConnectionDialog.cs" />
     <Compile Include="UI\EventLogEditorDialog.cs" />
     <Compile Include="UI\FileSaverDialog.cs" />
@@ -103,6 +104,9 @@
       <DependentUpon>EventLogEditorControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\FilePickerDialog.cs" />
+    <Compile Include="UI\XmlValidationEditorControl.xaml.cs">
+      <DependentUpon>XmlValidationEditorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validation\BinaryValidation.cs" />
     <Compile Include="Validation\XmlValidation.cs" />
     <Compile Include="File\FileMove.cs" />
@@ -153,6 +157,10 @@
     <Page Include="UI\EventLogEditorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\XmlValidationEditorControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

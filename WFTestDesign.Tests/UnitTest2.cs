@@ -12,7 +12,7 @@ namespace WFTestDesign.Tests
         [TestMethod]
         public void TestActivite()
         {
-            WFTestDesignInvoker bizunit = new WFTestDesignInvoker(@"E:\Dev\VS2010\WFTestDesign\WFTestDesign.Tests\Test1.xaml");
+            WFTestDesignInvoker bizunit = new WFTestDesignInvoker(@"D:\Dev\CodePlex\wftestdesign\WFTestDesign.Tests\Activity4.xaml");
             bizunit.LaunchTest();
         }
 
